@@ -50,6 +50,10 @@ class _HomePageState extends State<HomePage> {
               onPressed: () => Navigator.of(context).pushNamed(RouteNames.namedRoutePage),
               child: new Text('Named Route', style: theme.textTheme.button),
             ),
+            RaisedButton(
+              onPressed: () => Navigator.of(context).pushNamed(RouteNames.mvvmPage),
+              child: new Text('MVVM', style: theme.textTheme.button),
+            ),
           ],
         )
       )
