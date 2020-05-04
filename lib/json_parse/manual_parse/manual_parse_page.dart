@@ -45,44 +45,40 @@ class _ManualParsePageState extends State<ManualParsePage> {
 
   Widget _resultBuilder() {
     return Container(
-      constraints: BoxConstraints.expand(height: 80),
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.black12, width: 1),
-        borderRadius: BorderRadius.all(Radius.circular(4)),
-      ),
-      child: Padding(
-        padding: EdgeInsets.all(10),
-        child: (_jsonStructure == null)
-            ? Text('')
-            : FutureBuilder(
-          future: loadJsonString(_jsonStructure),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
-              switch (_jsonStructure) {
-                case JsonStructure.basicList:
-                  List<dynamic> decodedJson = json.decode(snapshot.data);
-                  return Text(BasicList.fromJson(decodedJson).toString());
-                case JsonStructure.basicMap:
-                  Map<String, dynamic> decodedJson = json.decode(snapshot.data);
-                  return Text(BasicMap.fromJson(decodedJson).toString());
-                case JsonStructure.basicMapWithList:
-                  Map<String, dynamic> decodedJson = json.decode(snapshot.data);
-                  return Text(BasicMapWithList.fromJson(decodedJson).toString());
-                case JsonStructure.basicMapWithListModel:
-                  Map<String, dynamic> decodedJson = json.decode(snapshot.data);
-                  return Text(BasicMapWithListModel.fromJson(decodedJson).toString());
-                case JsonStructure.basicMapWithModel:
-                  Map<String, dynamic> decodedJson = json.decode(snapshot.data);
-                  return Text(BasicMapWithModel.fromJson(decodedJson).toString());
-              }
-            } if (snapshot.hasError) {
-              return Text(snapshot.error.toString());
-            } else {
-              return Text('loading...');
-            }
-          },
+        constraints: BoxConstraints.expand(height: 80),
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.black12, width: 1),
+          borderRadius: BorderRadius.all(Radius.circular(4)),
         ),
-      )
+        child: Padding(
+          padding: EdgeInsets.all(10),
+          child: (_jsonStructure == null)
+              ? Text('')
+              : FutureBuilder(
+            future: loadJsonString(_jsonStructure),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
+                var decodedJson = json.decode(snapshot.data);
+                switch (_jsonStructure) {
+                  case JsonStructure.basicList:
+                    return Text(BasicList.fromJson(decodedJson).toString());
+                  case JsonStructure.basicMap:
+                    return Text(BasicMap.fromJson(decodedJson).toString());
+                  case JsonStructure.basicMapWithList:
+                    return Text(BasicMapWithList.fromJson(decodedJson).toString());
+                  case JsonStructure.basicMapWithListModel:
+                    return Text(BasicMapWithListModel.fromJson(decodedJson).toString());
+                  case JsonStructure.basicMapWithModel:
+                    return Text(BasicMapWithModel.fromJson(decodedJson).toString());
+                }
+              } if (snapshot.hasError) {
+                return Text(snapshot.error.toString());
+              } else {
+                return Text('loading...');
+              }
+            },
+          ),
+        )
     );
   }
 
