@@ -1,0 +1,14 @@
+{
+  "code": 0,
+  "result": "success",
+  "data": [
+    {
+      "name": "zhangsan",
+      "age": 18
+    },
+    {
+      "name": "lisi",
+      "age": 19
+    }
+  ]
+}
