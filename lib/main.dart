@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter101/global.dart';
 import 'package:flutter101/route_config.dart';
 
-void main() => runApp(App());
+void main() => Global.init().then((e) => runApp(App()));
 
 class App extends StatelessWidget {
 
@@ -57,6 +58,10 @@ class _HomePageState extends State<HomePage> {
             RaisedButton(
               onPressed:  () => Navigator.of(context).pushNamed(RouteNames.jsonParsePage),
               child: Text('Json Parse', style: theme.textTheme.button,),
+            ),
+            RaisedButton(
+              onPressed: () => Navigator.of(context).pushNamed(RouteNames.httpPage),
+              child: Text('Http', style: theme.textTheme.button),
             )
           ],
         )

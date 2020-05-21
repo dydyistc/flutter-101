@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter101/http/http_page.dart';
 import 'package:flutter101/json_parse/automatic_parse/automatic_parse_page.dart';
 import 'package:flutter101/json_parse/manual_parse/manual_parse_page.dart';
 import 'package:flutter101/json_parse/json_parse_page.dart';
@@ -16,6 +17,7 @@ class RouteNames {
   static const String jsonParsePage = 'jsonParsePage';
   static const String jsonManualParsePage = 'jsonManualParsePage';
   static const String jsonAutomaticParsePage = 'jsonAutomaticParsePage';
+  static const String httpPage = 'httpPage';
 }
 
 class RouteConfig {
@@ -28,5 +30,6 @@ class RouteConfig {
     RouteNames.jsonParsePage: (context) => JsonParsePage(),
     RouteNames.jsonManualParsePage: (context) => ManualParsePage(),
     RouteNames.jsonAutomaticParsePage: (context) => AutomaticParsePage(),
+    RouteNames.httpPage: (context) => HttpPage(),
   };
 }
