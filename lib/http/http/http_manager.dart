@@ -11,13 +11,16 @@ class HttpManager {
   static Dio dio = Dio(BaseOptions(
     baseUrl: 'https://api.douban.com',
     connectTimeout: 10000, // 请求超时 10s
+    sendTimeout: 5000,
+    receiveTimeout: 50000,
   ));
 
   static Future init() async {
     // 可以在App启动时从本地读取并设置用户token
     // dio.options.headers[HttpHeaders.authorizationHeader] = '';
 
-    dio.interceptors.add(HttpInterceptor());
+    // 拦截器(FIFO)，可以在请求之前或响应之后(但还没有被 then 或 catchError处理)做一些统一的预处理操作。
+//    dio.interceptors.add(HttpInterceptor());
   }
 
   static Future<T> get<T>(
@@ -52,6 +55,7 @@ class HttpManager {
       cancelToken: cancelToken,
       options: Options(method: method),
     )
+      .catchError((error) => throw castDioErrorToHttpError(error))
       .then((response) {
         if (response.data != null && dataParsing != null) {
           try {

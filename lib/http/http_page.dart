@@ -1,4 +1,3 @@
-import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter101/http/http/http.dart';
@@ -44,35 +43,16 @@ class _HttpPageState extends State<HttpPage> {
     }
   }
 
-  searchBooks() {
+  void searchBooks() {
     var params = {
-      'apikey': '0df993c66c0c636e29ecbb5344252a4a',
+      'apikey': '0df993c66c0c636e29ecbb5344252a4a', // 可以传错误的 apikey 来测试请求失败的情况。
       'q': '传奇',
       'start': 0,
       'count': 10,
     };
     Http.searchBooks(params)
-        .then((model) {
-          setState(() {
-            _model = model;
-            _isLoading = false;
-          });
-      })
-      .catchError((error) {
-        // TODO: 当抛出错误时竟不走这儿？？？
-        setState(() {
-          _error = error;
-          _isLoading = false;
-        });
-      });
-//    .whenComplete(() {
-//      print('complete');
-//      setState(() {
-//        _isLoading = false;
-//      });
-//    });
-
-//        .catchError((error) => _error = error)
-//      .whenComplete(() => setState(() => _isLoading = false));
+      .then((model) => _model = model)
+      .catchError((error) => _error = error)
+      .whenComplete(() => setState(() => _isLoading = false));
   }
 }

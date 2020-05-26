@@ -104,5 +104,46 @@ class User {
      flutter packages pub run build_runner watch
      ```
 
-     
+
+
+
+
+## 网络请求
+
+
+
+**注意：**在拦截器 `interceptor` 中把 `DioError` 转换为 `HttpError` 抛出是无效的，如果这样做，最终请求得到的是包装了 `HttpError` 的 `DioError` 对象。
+
+**因为：** Dio 发起的请求在返回 future 给业务层之前， catch 了错误（ `dio.dart` 文件907行 ），并把它包装成 DioError 对象（ `dio.dart` 文件1121行）
+
+ 第907行：
+
+```dart
+// Normalize errors, we convert error to the DioError
+return future.then<Response<T>>((data) {
+  return assureResponse<T>(data);
+}).catchError((err) {
+  if (err == null || _isErrorOrException(err)) {
+    throw assureDioError(err, requestOptions);
+  }
+  return assureResponse<T>(err, requestOptions);
+});
+```
+
+第1121行：
+
+```dart
+DioError assureDioError(err, [RequestOptions requestOptions]) {
+  DioError dioError;
+  if (err is DioError) {
+    dioError = err;
+  } else {
+    dioError = DioError(error: err);
+  }
+  dioError.request = dioError.request ?? requestOptions;
+  return dioError;
+}
+```
+
+
 
