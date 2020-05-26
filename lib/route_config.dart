@@ -1,4 +1,6 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter101/animation/animation_page.dart';
+import 'package:flutter101/animation/progress_animation_page.dart';
 import 'package:flutter101/http/http_page.dart';
 import 'package:flutter101/json_parse/automatic_parse/automatic_parse_page.dart';
 import 'package:flutter101/json_parse/manual_parse/manual_parse_page.dart';
@@ -18,6 +20,8 @@ class RouteNames {
   static const String jsonManualParsePage = 'jsonManualParsePage';
   static const String jsonAutomaticParsePage = 'jsonAutomaticParsePage';
   static const String httpPage = 'httpPage';
+  static const String animationPage = 'animationPage';
+  static const String progressAnimationPage = 'progressAnimationPage';
 }
 
 class RouteConfig {
@@ -31,5 +35,7 @@ class RouteConfig {
     RouteNames.jsonManualParsePage: (context) => ManualParsePage(),
     RouteNames.jsonAutomaticParsePage: (context) => AutomaticParsePage(),
     RouteNames.httpPage: (context) => HttpPage(),
+    RouteNames.animationPage: (context) => AnimationPage(),
+    RouteNames.progressAnimationPage: (context) => ProgressAnimationPage(),
   };
 }
