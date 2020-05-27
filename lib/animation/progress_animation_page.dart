@@ -9,14 +9,20 @@ class ProgressAnimationPage extends StatefulWidget {
 class _ProgressAnimationPageState extends State<ProgressAnimationPage>
   with SingleTickerProviderStateMixin {
 
-  AnimationController _animationController;
+  AnimationController controller;
 
   @override
   void initState() {
-    _animationController = AnimationController(vsync: this, duration: Duration(seconds: 6));
-    _animationController.forward();
-    _animationController.addListener(() => setState(() => {}));
+    controller = AnimationController(vsync: this, duration: Duration(seconds: 5));
+    controller.forward();
+    controller.addListener(() => setState(() => {}));
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -43,9 +49,9 @@ class _ProgressAnimationPageState extends State<ProgressAnimationPage>
             valueColor: AlwaysStoppedAnimation(Colors.blue),
           ),
           LinearProgressIndicator(
-            value: _animationController.value,
+            value: controller.value,
             backgroundColor: Colors.grey[200],
-            valueColor: ColorTween(begin: Colors.grey, end: Colors.blue).animate(_animationController),
+            valueColor: ColorTween(begin: Colors.grey, end: Colors.blue).animate(controller),
           ),
           Center(
             child: SizedBox(
@@ -83,9 +89,9 @@ class _ProgressAnimationPageState extends State<ProgressAnimationPage>
               width: 40,
               height: 40,
               child: CircularProgressIndicator(
-                value: _animationController.value,
+                value: controller.value,
                 backgroundColor: Colors.grey[200],
-                valueColor: ColorTween(begin: Colors.grey, end: Colors.blue).animate(_animationController),
+                valueColor: ColorTween(begin: Colors.grey, end: Colors.blue).animate(controller),
               ),
             ),
           ),
@@ -95,7 +101,7 @@ class _ProgressAnimationPageState extends State<ProgressAnimationPage>
               height: 40,
               child: CircularProgressIndicator(
                 backgroundColor: Colors.grey[200],
-                valueColor: ColorTween(begin: Colors.grey, end: Colors.blue).animate(_animationController),
+                valueColor: ColorTween(begin: Colors.grey, end: Colors.blue).animate(controller),
               ),
             )
           )

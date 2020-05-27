@@ -1,6 +1,10 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter101/animation/animation_page.dart';
 import 'package:flutter101/animation/progress_animation_page.dart';
+import 'package:flutter101/animation/scale_animatedbuilder_page.dart';
+import 'package:flutter101/animation/scale_animatedbuilder_refactor_page.dart';
+import 'package:flutter101/animation/scale_animatedwidget_page.dart';
+import 'package:flutter101/animation/scale_animation_page.dart';
 import 'package:flutter101/http/http_page.dart';
 import 'package:flutter101/json_parse/automatic_parse/automatic_parse_page.dart';
 import 'package:flutter101/json_parse/manual_parse/manual_parse_page.dart';
@@ -22,6 +26,10 @@ class RouteNames {
   static const String httpPage = 'httpPage';
   static const String animationPage = 'animationPage';
   static const String progressAnimationPage = 'progressAnimationPage';
+  static const String scaleAnimationPage = 'scaleAnimationPage';
+  static const String scaleAnimatedWidgetPage = 'scaleAnimatedWidgetPage';
+  static const String scaleAnimatedBuilderPage = 'scaleAnimatedBuilderPage';
+  static const String scaleAnimatedBuilderRefactorPage = 'scaleAnimatedBuilderRefactorPage';
 }
 
 class RouteConfig {
@@ -37,5 +45,9 @@ class RouteConfig {
     RouteNames.httpPage: (context) => HttpPage(),
     RouteNames.animationPage: (context) => AnimationPage(),
     RouteNames.progressAnimationPage: (context) => ProgressAnimationPage(),
+    RouteNames.scaleAnimationPage: (context) => ScaleAnimationPage(),
+    RouteNames.scaleAnimatedWidgetPage: (context) => ScaleAnimatedWidgetPage(),
+    RouteNames.scaleAnimatedBuilderPage: (context) => ScaleAnimatedBuilderPage(),
+    RouteNames.scaleAnimatedBuilderRefactorPage: (context) => ScaleAnimatedBuilderRefactorPage(),
   };
 }

@@ -112,11 +112,11 @@ class User {
 
 
 
-**注意：**在拦截器 `interceptor` 中把 `DioError` 转换为 `HttpError` 抛出是无效的，如果这样做，最终请求得到的是包装了 `HttpError` 的 `DioError` 对象。
+**注意**：在拦截器 `interceptor` 中把 `DioError` 转换为 `HttpError` 抛出是无效的，如果这样做，最终请求得到的是包装了 `HttpError` 的 `DioError` 对象。
 
-**因为：** Dio 发起的请求在返回 future 给业务层之前， catch 了错误（ `dio.dart` 文件907行 ），并把它包装成 DioError 对象（ `dio.dart` 文件1121行）
+**因为**：Dio 发起的请求在返回 future 给业务层之前，catch了错误( `dio.dart` 文件907行)，并把它包装成 `DioError`对象( `dio.dart` 文件1121行)。
 
- 第907行：
+ `dio.dart`  *第907行：*
 
 ```dart
 // Normalize errors, we convert error to the DioError
@@ -130,7 +130,7 @@ return future.then<Response<T>>((data) {
 });
 ```
 
-第1121行：
+`dio.dart` 第1121行：*
 
 ```dart
 DioError assureDioError(err, [RequestOptions requestOptions]) {
@@ -144,6 +144,63 @@ DioError assureDioError(err, [RequestOptions requestOptions]) {
   return dioError;
 }
 ```
+
+
+
+
+
+## 动画
+
+> 参考文章：
+>
+> [Flutter实战 - 第九章 动画](https://book.flutterchina.club/chapter9/intro.html)
+>
+> [Flutter实战 - 进度指示器](https://book.flutterchina.club/chapter3/progress.html)
+
+
+
+#### 简介：
+
+Flutter 对动画进行了抽象，一个完整的动画，主要涉及以下5个角色：
+
+- **Animation**: 是一个抽象类，保存动画的插值和状态。
+- **Curve**: 描述动画的过程，如 匀速、匀加速等。
+- **Controller**: 控制动画，如：启动 `forward()` 、停止 `stop()`、反向播放 `reverse()`。
+- **Tween**: 定义动画值区间，从输入范围到输出范围的映射。
+- **Ticker**: 添加屏幕刷新的回调，使用 `Ticker` (而不是 `Timer` ) 来驱动动画会防止屏幕外动画（动画的UI不在当前屏幕时，如锁屏时）消耗不必要的资源，锁屏后屏幕会停止刷新，所以 `Ticker` 就不会再触发。
+
+
+
+需要注意：
+
+- `AnimationController` 派生自 `Animation<double>` ，不同的是它具有控制动画的方法。
+- `Ticker` 是一个抽象类，Widget中只有单个 animation controller 时，使用 `SingleTickerProviderStateMixin`；有多个 animation controller 时，使用 `TickerProviderStateMixin`。
+
+
+
+#### 进度指示器：
+
+1. 线性、条状进度条：`LinearProgressIndicator`
+2. 圆形进度条：`CircularProgressIndicator`
+
+它俩可设置的属性是一样的，如：
+
+```dart
+LinearProgressIndicator({
+  double value,
+  Color backgroundColor,
+  Animation<Color> valueColor,
+  ...
+})
+```
+
+- `value`：当前的进度，取值范围为[0,1]；如果 `value` 为 `null` 则指示器会执行一个循环动画（模糊进度）。
+- `backgroundColor`：指示器的背景色。
+- `valueColor`: 指示器的进度条颜色；该值类型是 `Animation`，这允许我们对进度条的颜色指定动画。如果想固定进度条的颜色，可以使用 `AlwaysStoppedAnimation`。
+
+设置大小：
+
+这两个指示器是取父容器的尺寸作为绘制的边界，可以通过尺寸限制类Widget，如 `ConstrainedBox`、`SizedBox` 来指定尺寸。
 
 
 

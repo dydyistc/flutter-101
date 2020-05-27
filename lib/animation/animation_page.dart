@@ -15,6 +15,10 @@ class _AnimationPageState extends State<AnimationPage> {
         padding: EdgeInsets.symmetric(vertical: 20, horizontal: 50),
         children: <Widget>[
           _button('Progress', () => Navigator.of(context).pushNamed(RouteNames.progressAnimationPage)),
+          _button('Scale Animation', () => Navigator.of(context).pushNamed(RouteNames.scaleAnimationPage)),
+          _button('Scale Animated Widget', () => Navigator.of(context).pushNamed(RouteNames.scaleAnimatedWidgetPage)),
+          _button('Scale Animated Builder', () => Navigator.of(context).pushNamed(RouteNames.scaleAnimatedBuilderPage)),
+          _button('Scale Animated Builder Refactor', () => Navigator.of(context).pushNamed(RouteNames.scaleAnimatedBuilderRefactorPage)),
         ],
       )
     );
