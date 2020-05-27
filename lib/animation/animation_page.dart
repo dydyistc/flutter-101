@@ -19,6 +19,7 @@ class _AnimationPageState extends State<AnimationPage> {
           _button('Scale Animated Widget', () => Navigator.of(context).pushNamed(RouteNames.scaleAnimatedWidgetPage)),
           _button('Scale Animated Builder', () => Navigator.of(context).pushNamed(RouteNames.scaleAnimatedBuilderPage)),
           _button('Scale Animated Builder Refactor', () => Navigator.of(context).pushNamed(RouteNames.scaleAnimatedBuilderRefactorPage)),
+          Hero(tag: 'hero', child: _button('Hero Animation', () => Navigator.of(context).pushNamed(RouteNames.heroAnimationPage)),),
         ],
       )
     );

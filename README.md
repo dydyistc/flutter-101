@@ -204,3 +204,12 @@ LinearProgressIndicator({
 
 
 
+#### 路由转场动画：
+
+命名路由 + 转场动画，推荐使用统一路由管理库 [fluro](https://github.com/theyakka/fluro) ，Flutter原生好像暂不支持这种。
+
+
+
+#### Hero 动画：
+
+示例中给 Hero动画页的child 包装了一层 SizedBox，因为发现如果不固定转场元素的大小，在动画结束时会突变到最终大小，导致动画元素闪一下(Hero动画第一页未固定大小，从第二页返回时可看到)。

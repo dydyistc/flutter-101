@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter101/animation/animation_page.dart';
+import 'package:flutter101/animation/hero_animation_page.dart';
 import 'package:flutter101/animation/progress_animation_page.dart';
 import 'package:flutter101/animation/scale_animatedbuilder_page.dart';
 import 'package:flutter101/animation/scale_animatedbuilder_refactor_page.dart';
@@ -30,6 +31,7 @@ class RouteNames {
   static const String scaleAnimatedWidgetPage = 'scaleAnimatedWidgetPage';
   static const String scaleAnimatedBuilderPage = 'scaleAnimatedBuilderPage';
   static const String scaleAnimatedBuilderRefactorPage = 'scaleAnimatedBuilderRefactorPage';
+  static const String heroAnimationPage = 'heroAnimationPage';
 }
 
 class RouteConfig {
@@ -49,5 +51,6 @@ class RouteConfig {
     RouteNames.scaleAnimatedWidgetPage: (context) => ScaleAnimatedWidgetPage(),
     RouteNames.scaleAnimatedBuilderPage: (context) => ScaleAnimatedBuilderPage(),
     RouteNames.scaleAnimatedBuilderRefactorPage: (context) => ScaleAnimatedBuilderRefactorPage(),
+    RouteNames.heroAnimationPage: (context) => HeroAnimationPage(),
   };
 }
