@@ -67,6 +67,10 @@ class _HomePageState extends State<HomePage> {
               onPressed: () => Navigator.of(context).pushNamed(RouteNames.animationPage),
               child: Text('Animation', style: theme.textTheme.button,),
             ),
+            RaisedButton(
+              onPressed: () => Navigator.of(context).pushNamed(RouteNames.listRefreshPage),
+              child: Text('List Refresh', style: theme.textTheme.button,),
+            )
           ],
         )
       )

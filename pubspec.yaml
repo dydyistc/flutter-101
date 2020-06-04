@@ -26,6 +26,7 @@ dependencies:
 
   json_annotation: ^3.0.1
   dio: ^3.0.9
+  pull_to_refresh: ^1.5.7
 
 dev_dependencies:
   flutter_test:
