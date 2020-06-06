@@ -1,21 +1,21 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter101/route_config.dart';
 
-class JsonParsePage extends StatefulWidget {
+class ProviderPage extends StatefulWidget {
   @override
-  _JsonParsePageState createState() => _JsonParsePageState();
+  _ProviderPageState createState() => _ProviderPageState();
 }
 
-class _JsonParsePageState extends State<JsonParsePage> {
+class _ProviderPageState extends State<ProviderPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Json Parse'),),
+      appBar: AppBar(title: Text('Provider Demo'),),
       body: ListView(
         padding: EdgeInsets.symmetric(vertical: 20, horizontal: 50),
         children: <Widget>[
-          _button('Manual Parse', RouteNames.jsonManualParsePage),
-          _button('Automatic Parse', RouteNames.jsonAutomaticParsePage),
+          _button('Counter', RouteNames.counterPage),
         ],
       ),
     );

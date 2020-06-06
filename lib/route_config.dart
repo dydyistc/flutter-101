@@ -13,6 +13,8 @@ import 'package:flutter101/json_parse/json_parse_page.dart';
 import 'package:flutter101/list_refresh/list_refresh_page.dart';
 import 'package:flutter101/main.dart';
 import 'package:flutter101/mvvm/mvvm_page.dart';
+import 'package:flutter101/provider/Counter/counter_page.dart';
+import 'package:flutter101/provider/provider_page.dart';
 import 'package:flutter101/route/common_route_page.dart';
 import 'package:flutter101/route/named_route_page.dart';
 
@@ -34,6 +36,8 @@ class RouteNames {
   static const String scaleAnimatedBuilderRefactorPage = 'scaleAnimatedBuilderRefactorPage';
   static const String heroAnimationPage = 'heroAnimationPage';
   static const String listRefreshPage = 'listRefreshPage';
+  static const String providerPage = 'providerPage';
+  static const String counterPage = 'counterPage';
 }
 
 class RouteConfig {
@@ -55,5 +59,7 @@ class RouteConfig {
     RouteNames.scaleAnimatedBuilderRefactorPage: (context) => ScaleAnimatedBuilderRefactorPage(),
     RouteNames.heroAnimationPage: (context) => HeroAnimationPage(),
     RouteNames.listRefreshPage: (context) => ListRefreshPage(),
+    RouteNames.providerPage: (context) => ProviderPage(),
+    RouteNames.counterPage: (context) => CounterPage(),
   };
 }

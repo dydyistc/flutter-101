@@ -40,8 +40,8 @@ class _ListRefreshPageState extends State<ListRefreshPage> {
       body: SmartRefresher(
         enablePullUp: true,
         controller: _refreshController,
-        onRefresh: () => _viewModel.refresh(),
-        onLoading: () => _viewModel.loadMore(),
+        onRefresh: _viewModel.refresh,
+        onLoading: _viewModel.loadMore,
         child: ListView.builder(
             padding: EdgeInsets.all(10),
             itemCount: _viewModel.stories.length,

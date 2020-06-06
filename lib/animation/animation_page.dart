@@ -14,20 +14,23 @@ class _AnimationPageState extends State<AnimationPage> {
       body: ListView(
         padding: EdgeInsets.symmetric(vertical: 20, horizontal: 50),
         children: <Widget>[
-          _button('Progress', () => Navigator.of(context).pushNamed(RouteNames.progressAnimationPage)),
-          _button('Scale Animation', () => Navigator.of(context).pushNamed(RouteNames.scaleAnimationPage)),
-          _button('Scale Animated Widget', () => Navigator.of(context).pushNamed(RouteNames.scaleAnimatedWidgetPage)),
-          _button('Scale Animated Builder', () => Navigator.of(context).pushNamed(RouteNames.scaleAnimatedBuilderPage)),
-          _button('Scale Animated Builder Refactor', () => Navigator.of(context).pushNamed(RouteNames.scaleAnimatedBuilderRefactorPage)),
-          Hero(tag: 'hero', child: _button('Hero Animation', () => Navigator.of(context).pushNamed(RouteNames.heroAnimationPage)),),
+          _button('Progress', RouteNames.progressAnimationPage),
+          _button('Scale Animation', RouteNames.scaleAnimationPage),
+          _button('Scale Animated Widget', RouteNames.scaleAnimatedWidgetPage),
+          _button('Scale Animated Builder', RouteNames.scaleAnimatedBuilderPage),
+          _button('Scale Animated Builder Refactor', RouteNames.scaleAnimatedBuilderRefactorPage),
+          Hero(
+            tag: 'hero',
+            child: _button('Hero Animation', RouteNames.heroAnimationPage),
+          ),
         ],
       )
     );
   }
 
-  Widget _button(String text, VoidCallback onPressed) {
+  Widget _button(String text, String routeName) {
     return RaisedButton(
-      onPressed: onPressed,
+      onPressed: () => Navigator.of(context).pushNamed(routeName),
       child: Text(text, style: Theme.of(context).textTheme.button,),
     );
   }
