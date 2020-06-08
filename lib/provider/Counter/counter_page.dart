@@ -11,6 +11,12 @@ class _CounterPageState extends State<CounterPage> {
   final CounterViewModel _viewModel = CounterViewModel();
 
   @override
+  void dispose() {
+    _viewModel.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider.value(
       value: _viewModel,

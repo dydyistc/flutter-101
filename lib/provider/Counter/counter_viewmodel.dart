@@ -1,12 +1,21 @@
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class CounterViewModel extends ChangeNotifier {
+class CounterViewModel with ChangeNotifier, DiagnosticableTreeMixin {
   int _count = 0;
   int get count => _count;
 
   void increment() {
     _count++;
     notifyListeners();
+  }
+
+  /// Makes `Counter` readable inside the devtools by listing all of its properties
+  /// Alternative, override `toString()` method.
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(IntProperty('count', count));
   }
 }

@@ -206,10 +206,45 @@ LinearProgressIndicator({
 
 #### 路由转场动画：
 
-命名路由 + 转场动画，推荐使用统一路由管理库 [fluro](https://github.com/theyakka/fluro) ，Flutter原生好像暂不支持这种。
+命名路由 + 转场动画，推荐使用统一路由管理库 [fluro](https://github.com/theyakka/fluro) 。
+
+（Flutter原生好像只支持 非命名路由+转场动画）
 
 
 
 #### Hero 动画：
 
 示例中给 Hero动画页的child 包装了一层 SizedBox，因为发现如果不固定转场元素的大小，在动画结束时会突变到最终大小，导致动画元素闪一下(Hero动画第一页未固定大小，从第二页返回时可看到)。
+
+
+
+
+
+## 列表上下拉刷新
+
+上下拉刷新库：[pull_to_refresh](https://github.com/peng8350/flutter_pulltorefresh)
+
+
+
+
+
+## 状态管理 - Provider
+
+Provider 是 Google I/O 2019 大会上官方推荐的状态管理方式。
+
+GitHub: [Provider](https://github.com/rrousselGit/provider)
+
+
+
+> [《Flutter实战 - 跨组件状态共享 Provider》](https://book.flutterchina.club/chapter7/provider.html)  (**强烈推荐，此文由浅入深讲解了 Provider 基本原理**)
+>
+> [Provider 内容调试 (工具：devtools)]((https://github.com/rrousselGit/provider))
+>
+> [Flutter状态管理provider的使用和封装](https://juejin.im/post/5ed3df5951882542fc624efb)
+>
+> [Flutter官方购物车Demo - Simple app state management](https://flutter.dev/docs/development/data-and-backend/state-mgmt/simple)
+
+
+
+
+
